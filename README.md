@@ -1,8 +1,17 @@
-# Assignment
-I implemented a fast, robust pipeline designed to run in the free Colab tier within the 30s processing goal for short calls. 
-The notebook downloads the YouTube test file, converts audio to mono 16 kHz, and runs Whisper (tiny) for quick transcription with timestamps.
-I use energy-based VAD as a reliable fallback and a lightweight heuristic to detect speaker turns (flip when gaps > 0.8s).
-From timestamps I compute talk-time ratio, count questions (punctuation + interrogative starts), measure the longest continuous monologue, and use a Transformer sentiment pipeline for overall call sentiment. 
-A simple rule-based insight generator suggests actions (e.g., let customer speak more) based on talk-time imbalance. 
-The notebook includes inline comments and optional instructions to swap in pyannote.audio or advanced diarization for more accurate speaker attribution (bonus: identify sales rep vs. customer). 
-The design prioritizes reproducibility, speed, and clear trade-offs.
+I built a Call Quality Analyzer designed to run efficiently on the free Google Colab tier within ~30 seconds. The system downloads the provided YouTube test file, preprocesses it into mono 16 kHz audio, and applies Whisper (tiny) for fast speech-to-text with timestamps.
+
+From the transcript, I compute key metrics:
+
+Talk-time ratio (weighted by both duration and word count)
+
+Number of questions asked (using regex + interrogative cues)
+
+Longest continuous monologue
+
+Overall call sentiment (positive/negative/neutral, averaged across turns)
+
+A lightweight rule-based insight generator then suggests one actionable improvement (e.g., balance participation, ask more open-ended questions, handle objections). The notebook includes inline comments, runs fully on free Colab, and produces both printed results and a CSV export of speaker turns.
+
+The design prioritizes speed, clarity, and reproducibility while leaving room for enhancements like pyannote.audio diarization for accurate speaker attribution and faster-whisper/OpenAI API for higher transcription accuracy.
+
+This solution demonstrates practical AI/ML application in real-world voice analytics while meeting the given constraints.
