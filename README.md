@@ -1,2 +1,8 @@
 # Assignment
-I implemented a fast, robust pipeline designed to run in the free Colab tier within the 30s processing goal for short calls. The notebook downloads the YouTube test file, converts audio to mono 16 kHz, and runs Whisper (tiny) for quick transcription with timestamps. I use energy-based VAD as a reliable fallback and a lightweight heuristic to detect speaker turns (flip when gaps > 0.8s). From timestamps I compute talk-time ratio, count questions (punctuation + interrogative starts), measure the longest continuous monologue, and use a Transformer sentiment pipeline for overall call sentiment. A simple rule-based insight generator suggests actions (e.g., let customer speak more) based on talk-time imbalance. The notebook includes inline comments and optional instructions to swap in pyannote.audio or advanced diarization for more accurate speaker attribution (bonus: identify sales rep vs. customer). The design prioritizes reproducibility, speed, and clear trade-offs.
+I implemented a fast, robust pipeline designed to run in the free Colab tier within the 30s processing goal for short calls. 
+The notebook downloads the YouTube test file, converts audio to mono 16 kHz, and runs Whisper (tiny) for quick transcription with timestamps.
+I use energy-based VAD as a reliable fallback and a lightweight heuristic to detect speaker turns (flip when gaps > 0.8s).
+From timestamps I compute talk-time ratio, count questions (punctuation + interrogative starts), measure the longest continuous monologue, and use a Transformer sentiment pipeline for overall call sentiment. 
+A simple rule-based insight generator suggests actions (e.g., let customer speak more) based on talk-time imbalance. 
+The notebook includes inline comments and optional instructions to swap in pyannote.audio or advanced diarization for more accurate speaker attribution (bonus: identify sales rep vs. customer). 
+The design prioritizes reproducibility, speed, and clear trade-offs.
