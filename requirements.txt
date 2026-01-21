@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+openai-whisper
+torch
+transformers
+numpy
+librosa
+soundfile
+pydub
+scipy
