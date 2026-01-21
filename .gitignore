@@ -1,0 +1,65 @@
+# ----------------------------
+# Python cache / bytecode
+# ----------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ----------------------------
+# Virtual environments
+# ----------------------------
+env/
+venv/
+.venv/
+
+# ----------------------------
+# Environment variables
+# ----------------------------
+.env
+.env.*
+
+# ----------------------------
+# OS / editor junk
+# ----------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ----------------------------
+# Jupyter / Colab artifacts
+# ----------------------------
+.ipynb_checkpoints/
+
+# ----------------------------
+# ML / audio artifacts
+# ----------------------------
+*.wav
+*.mp3
+*.m4a
+*.csv
+*.log
+
+# ----------------------------
+# Model & cache directories
+# ----------------------------
+.cache/
+.cache/*
+.whisper/
+torch_cache/
+huggingface/
+
+# ----------------------------
+# Build / distribution
+# ----------------------------
+build/
+dist/
+*.egg-info/
+
+# ----------------------------
+# Temporary files
+# ----------------------------
+tmp/
+temp/
+*.tmp
