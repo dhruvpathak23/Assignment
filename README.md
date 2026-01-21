@@ -1,17 +1,52 @@
-I built a Call Quality Analyzer designed to run efficiently on the free Google Colab tier within ~30 seconds. The system downloads the provided YouTube test file, preprocesses it into mono 16 kHz audio, and applies Whisper (tiny) for fast speech-to-text with timestamps.
+# Call Sentiment Analyzer API
 
-From the transcript, I compute key metrics:
+An end-to-end ML-powered API that analyzes call audio to extract:
+- Overall call sentiment
+- Speaker dominance (talk-time ratio)
+- Number of questions asked
+- Longest monologue duration
+- Actionable coaching insights
 
-Talk-time ratio (weighted by both duration and word count)
+Built using **Whisper (ASR)**, **Transformers (NLP)**, and **FastAPI**.
 
-Number of questions asked (using regex + interrogative cues)
+---
 
-Longest continuous monologue
+## Features
+- Upload call audio (wav/mp3/m4a)
+- Automatic speech-to-text
+- Sentiment analysis
+- Conversation quality metrics
+- JSON response via REST API
 
-Overall call sentiment (positive/negative/neutral, averaged across turns)
+---
 
-A lightweight rule-based insight generator then suggests one actionable improvement (e.g., balance participation, ask more open-ended questions, handle objections). The notebook includes inline comments, runs fully on free Colab, and produces both printed results and a CSV export of speaker turns.
+## API Endpoint
 
-The design prioritizes speed, clarity, and reproducibility while leaving room for enhancements like pyannote.audio diarization for accurate speaker attribution and faster-whisper/OpenAI API for higher transcription accuracy.
+### POST `/analyze-call`
 
-This solution demonstrates practical AI/ML application in real-world voice analytics while meeting the given constraints.
+**Request**
+- Form-data
+- Key: `file`
+- Value: audio file (wav/mp3/m4a)
+
+**Response**
+```json
+{
+  "filename": "call.wav",
+  "sentiment": "POSITIVE",
+  "metrics": {
+    "talk_time_ratio": { "A": 0.72, "B": 0.28 },
+    "num_questions": 5,
+    "longest_monologue_s": 42.3,
+    "insight": "Speaker A is dominating..."
+  }
+}
+
+Run Locally :
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+
+
+Open:
+
+http://127.0.0.1:8000/docs
