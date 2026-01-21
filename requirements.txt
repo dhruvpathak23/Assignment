@@ -1,6 +1,6 @@
 torch==2.9.1+cpu
 --extra-index-url https://download.pytorch.org/whl/cpu
-
+python-multipart
 fastapi
 uvicorn
 openai-whisper
