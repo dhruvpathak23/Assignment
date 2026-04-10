@@ -23,7 +23,7 @@ if uploaded_file is not None:
             try:
                 # --- API Connection ---
                 # This points to your local FastAPI server
-                api_url = "http://localhost:8000/analyze-call"
+                api_url = "https://call-analyzer-api-eo0i.onrender.com/analyze-call"
                 files = {"file": (uploaded_file.name, uploaded_file.getvalue(), "audio/wav")}
                 
                 # Send the POST request to your main.py endpoint
