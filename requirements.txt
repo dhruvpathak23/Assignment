@@ -1,14 +1,13 @@
+# Use the CPU-only version of PyTorch to save ~400MB of RAM
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.9.1+cpu
+torch
+torchaudio
 
+# Core dependencies
 fastapi
 uvicorn
 python-multipart
-
 openai-whisper
 transformers
-numpy
-librosa
-soundfile
-pydub
-scipy
+requests
+streamlit
