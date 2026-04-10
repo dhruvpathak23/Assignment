@@ -10,6 +10,7 @@ import tempfile
 import shutil
 
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.speech_to_text import transcribe_audio
 from app.sentiment import analyze_sentiment
@@ -29,7 +30,12 @@ app = FastAPI(
     ),
     version="1.0.0",
 )
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # In production, replace with your streamlit URL
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # -----------------------------------
 # API endpoint
