@@ -35,6 +35,15 @@ app = FastAPI(
 # API endpoint
 # -----------------------------------
 
+@app.get("/analyze-call")
+async def analyze_call_get():
+    """Return instructions for the analyze-call endpoint."""
+    return {
+        "message": "Use POST /analyze-call with multipart form data. Submit field 'file' with wav/mp3/m4a." ,
+        "example_curl": "curl -X POST 'http://127.0.0.1:8000/analyze-call' -F 'file=@/path/to/audio.wav'"
+    }
+
+
 @app.post("/analyze-call")
 async def analyze_call(file: UploadFile = File(...)):
     """
